@@ -15,3 +15,18 @@ export const API_STRING = {
   activitydata_for_months : 'activitydata_for_months',
   fb_signup : 'fbsignup',
 } 
+
+export const FACEBOOK = {
+  app_id : '1734631886729369',
+  app_secret : '89f32e26c5dbf96db8a1a599f347ccda',
+  app_name : 'TRAN-ME',
+}
+
+export const GOOGLE = {
+  iOS_client_ID : '864055601504-gmbbd733r575okfe5fm3rp23srfvha9p.apps.googleusercontent.com',
+  android_client_ID : '',
+}
+
+export const APPLE = {
+
+}

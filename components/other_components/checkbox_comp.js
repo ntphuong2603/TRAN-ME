@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { COLORS } from '../../utils/constant'
 
-export default function CheckboxComp({isCheck, onPress, style, text, textStyle, iconSize = 15}) {
+export default function CheckboxComp({isCheck, onPress, style, text, textStyle, iconSize = 22}) {
     return(
         <View>
             <TouchableOpacity onPress={onPress} style={[styles.checkBox, style]}>

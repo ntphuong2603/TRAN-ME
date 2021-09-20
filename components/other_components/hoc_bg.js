@@ -4,7 +4,17 @@ import { DIMENSION } from '../../utils/constant'
 
 export default function HOC_Background(props) {
 
-    const { isShowRectangle, isNoBackground } = props
+    const { isShowRectangle, isNoBackground, isRectangleOnly } = props
+
+    const ViewContainer = () => {
+        return (
+            <View style={styles.contentContainer}>
+                <View style={styles.viewScreen}>
+                    {props.children}
+                </View>
+            </View>
+        )
+    }
 
     const TransparentBackground = () => {
         return (
@@ -12,11 +22,7 @@ export default function HOC_Background(props) {
                 style={{ resizeMode: 'contain', height: DIMENSION.height, width: DIMENSION.width }}
                 source={require('../../assets/images/background.png')}
             >
-                <View style={styles.contentContainer}>
-                    <View style={styles.viewScreen}>
-                        {props.children}
-                    </View>
-                </View>
+                <ViewContainer/>
             </ImageBackground>
         )
     }
@@ -27,27 +33,36 @@ export default function HOC_Background(props) {
                 style={{ resizeMode: 'contain', height: DIMENSION.height, width: DIMENSION.width }}
                 source={require('../../assets/images/rectangle.png')}
             >
-                <TransparentBackground/>
+                <TransparentBackground />
             </ImageBackground>
         )
     }
 
     if (isShowRectangle) {
         return (
-            <RectangleBackground/>
+            <RectangleBackground />
         )
     }
 
     if (isNoBackground) {
         return (
-            <>
-                {props.children}
-            </>
+            <ViewContainer/>
+        )
+    }
+
+    if (isRectangleOnly) {
+        return (
+            <ImageBackground
+                style={{ resizeMode: 'contain', height: DIMENSION.height, width: DIMENSION.width }}
+                source={require('../../assets/images/rectangle.png')}
+            >
+                <ViewContainer/>
+            </ImageBackground>
         )
     }
 
     return (
-        <TransparentBackground/>
+        <TransparentBackground />
     )
 }
 
@@ -59,9 +74,9 @@ const styles = StyleSheet.create({
         // borderColor: 'red',
         // borderWidth: 3,
     },
-    viewScreen:{
+    viewScreen: {
         width: '97%',
-        flexGrow: 1,
+        flex: 1,
         // justifyContent: 'center',
         // alignItems: 'center',
         // borderColor: 'blue',

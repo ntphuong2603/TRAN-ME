@@ -84,6 +84,8 @@ export const AUTH_NAVIGATOR = {
   signup : 'signup',
   signin : 'signin',
   verify : 'verify',
+  resetPassword : 'reset password',
+  loadingData : 'loading data'
 }
 
 export const DASHBOARD = {
@@ -101,6 +103,7 @@ export const DASHBOARD_NAVIGATOR = {
   race: 'race',
   news: 'news',
   settingNavigator: 'settings navigator',
+  loadingData : 'loading data',
 }
 
 export const SETTINGS = {
@@ -158,6 +161,23 @@ export const CREATWALLET_NAVIGATOR = {
   createWalletScreen : 'create wallet screen',
   verifySeed : 'verify seed',
   seedCompleted: 'seed completed',
+}
+
+export const EVENTS_NAVIGATOR = {
+  standing: 'standings',
+  information: 'information',
+}
+
+export const EVENTS_INFORMATION_NAVIGATOR = {
+  createTeam : 'create team',
+  createMember : 'create membership',
+  addMember : 'add member',
+  createLeague : 'create league',
+  manageMember : 'manage members',
+}
+
+export const RACE_NAVIGATOR = {
+  
 }
 
 export const INPUT_FIELDS = {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { AUTH_NAVIGATOR, COLORS, INPUT_FIELDS } from '../utils/constant';
+import { AUTH_NAVIGATOR, COLORS, FONT_SIZE, INPUT_FIELDS, ROBOTO_FONT } from '../utils/constant';
 import AccountTemplate from '../templates/account_template';
 
 export default function Signup_scr (props) {
@@ -54,10 +54,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   info: {
-    color: COLORS.DARK_GRAY
+    color: COLORS.DARK_GRAY,
+    fontFamily: ROBOTO_FONT.medium,
+    fontSize: FONT_SIZE.body_2,
   },
   signup:{
     color: COLORS.PRIMARY,
+    fontFamily: ROBOTO_FONT.medium,
+    fontSize: FONT_SIZE.body_2,
   },
   seperator:{
     width:'100%',

@@ -2,7 +2,6 @@ import React from 'react'
 import { View } from 'react-native'
 import { COLORS, DASHBOARD_NAVIGATOR, SETTINGS_NAVIGATOR } from '../utils/constant'
 import Home_scr from '../screens/home_scr'
-import Events_scr from '../screens/events_scr'
 import Race_scr from '../screens/race_scr'
 import News_scr from '../screens/news_scr'
 import Notification_scr from '../screens/notification_scr'
@@ -11,6 +10,7 @@ import NotificationComp from '../components/other_components/notification_comp'
 import NavigatorTemplate from '../templates/navigator_template'
 import { getCurrentBottomNavigation } from '../utils/getNavigationName'
 import BottomNavigation from './bottomNavigation'
+import EventsNavigator from './eventsNavigator'
 
 export default function DashboardNavigator(props) {
 
@@ -27,7 +27,7 @@ export default function DashboardNavigator(props) {
             comp: Home_scr
         }, {
             name: DASHBOARD_NAVIGATOR.events,
-            comp: Events_scr
+            comp: EventsNavigator,
         }, {
             name: DASHBOARD_NAVIGATOR.race,
             comp: Race_scr

@@ -4,16 +4,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import DashboardTemplate from '../templates/dashboard_templates'
 import { COLORS, FONT_SIZE, ROBOTO_FONT, SETTINGS_NAVIGATOR } from '../utils/constant'
 import TwoColsComp from '../components/other_components/twoCols_comp'
+import RenderList_Comp from '../components/other_components/renderList_comp'
+import RightArrow_Comp from '../components/other_components/rightArrow_comp'
 
 export default function Settings_scr(props) {
 
   const { navigation } = props
-
-  const rightArrow = (screenName) => (
-    <TouchableOpacity onPress={() => navigation.navigate(screenName)}>
-      <Image resizeMode='contain' style={styles.rightArrow} source={require('../assets/icons/chevron_right.png')}/>
-    </TouchableOpacity>
-  )
 
   const Account = () => {
 
@@ -34,27 +30,10 @@ export default function Settings_scr(props) {
         style={{ paddingBottom: 35 }}
         leftComp={accountInfo()}
         leftStyle={{ flex: 3 }}
-        rightComp={rightArrow(SETTINGS_NAVIGATOR.profileNavigator)}
+        rightComp={<RightArrow_Comp navigation={navigation} screenName={SETTINGS_NAVIGATOR.profileNavigator} />}
       />
     )
   }
-
-  const renderItem = ({ list, child }) => (
-    <View style={styles.itemContainer}>
-      {list.map((item, index) => (
-        <TouchableOpacity style={[index === 0 ? null : styles.topLine, styles.itemHeight]}
-          onPress={() => navigation.navigate(item)}
-        >
-          <TwoColsComp
-            leftComp={<Text style={styles.itemNamText}>{item}</Text>}
-            leftStyle={{ flex: 3, justifyContent: 'center' }}
-            rightComp={rightArrow(item)}
-          />
-        </TouchableOpacity>
-      ))}
-      {child}
-    </View>
-  )
 
   const LogoutBtn = () => (
     <TouchableOpacity onPress={() => alert('Logout press !')}>
@@ -79,19 +58,10 @@ export default function Settings_scr(props) {
   return (
     <DashboardTemplate {...props}>
       <Account />
-        {renderItem({ list: firstList })}
-        <View style={ styles.itemHeight } />
-        {renderItem({ list: secondList, child: <LogoutBtn /> })}
+      <RenderList_Comp list={firstList} />
+      <View style={styles.itemHeight} />
+      <RenderList_Comp list={secondList} child={<LogoutBtn />} />
     </DashboardTemplate>
-    // <View style={styles.container}>
-    //   <View style={styles.screenView}>
-    //     {/* <NotificationComp title={'Settings'} /> */}
-    //     <Account />
-    //     {renderItem({ list: firstList })}
-    //     <View style={ styles.itemHeight } />
-    //     {renderItem({ list: secondList, child: <LogoutBtn /> })}
-    //   </View>
-    // </View>
   )
 }
 
@@ -164,7 +134,7 @@ const styles = StyleSheet.create({
     color: COLORS.PRIMARY,
     textAlign: 'center'
   },
-  rightArrow:{
+  rightArrow: {
     width: 20,
     height: 20,
     margin: 10,

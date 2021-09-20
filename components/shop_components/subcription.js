@@ -50,6 +50,38 @@ export default function Subcription(props) {
     </View>
   )}
   
+  const creadit_card = () => {
+    const card_info = () => (
+      <TwoColsComp
+        leftComp={
+          <View>
+            <Text style={{color:COLORS.DARK_GRAY, fontSize: FONT_SIZE.body_3}}> Credit/Dedit </Text>
+            <Text> xxx xxx xxx 2444 </Text>
+            <Text style={{color:COLORS.DARK_GRAY, fontSize: FONT_SIZE.body_3}}> Expiry: 09/21 </Text>
+          </View>
+        }
+        leftStyle={{flex: 4}}
+        rightComp={<Text style={{color: COLORS.PRIMARY}}>Edit</Text>}
+        rightStyle={{justifyContent: 'center'}}
+      />
+    )
+
+    return (
+    <View>
+      <Text style={styles.cardTitle}> Credit card </Text>
+      <View style={styles.addCardContainer}>
+        <TwoColsComp
+          style={{margin: 15,}}
+          leftComp={<Image resizeMode='contain' style={styles.addCardImg} source={require('../../assets/icons/visa-icon.png')}/>}
+          leftStyle={{alignItems: 'center', justifyContent: 'center'}}
+          rightComp={card_info()}
+          rightStyle={{flex: 5, alignItems: 'flex-start', justifyContent: 'center'}}
+        />
+      </View>  
+    </View>
+    )
+  }
+
   const visa = () => {
     const visaInfo = () => (
       <TwoColsComp
@@ -100,6 +132,7 @@ export default function Subcription(props) {
       {subscriptionFee()}
       {paypal()}
       {visa()}
+      {/* {MediaStream()} */}
       {addCard()}
     </SettingTemplate>
   )

@@ -2,14 +2,14 @@ import React from 'react';
 import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS, FONT_SIZE, ROBOTO_FONT } from '../../utils/constant';
 
-export default function ButtonComp({ title, onPress, style, disabled }) {
+export default function ButtonComp({ title, onPress, style, btnStyle, disabled }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <TouchableOpacity
         disabled={disabled}
         activeOpacity={0.5}
         onPress={onPress}
-        style={[styles.button, style, disabled === true ? styles.passiveColor : styles.activeColor]}
+        style={[styles.button, btnStyle, disabled === true ? styles.passiveColor : styles.activeColor]}
       >
         <Text style={styles.buttonText}>{title}</Text>
       </TouchableOpacity>

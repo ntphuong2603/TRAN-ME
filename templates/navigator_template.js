@@ -17,7 +17,7 @@ export default function NavigatorTemplate(props) {
       screenOptions={{ headerShown: false, gestureEnabled: isGestureEnabled }}
     >
       {navigatorList.map((item, index) => (
-        <StackNavigator.Screen key={index + Math.random()}
+        <StackNavigator.Screen key={index}
           name={item.name} component={item.comp}
         />
       ))}

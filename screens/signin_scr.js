@@ -7,13 +7,13 @@ import CheckboxComp from '../components/other_components/checkbox_comp';
 import AlternativeSigninComp from '../components/other_components/alternativeSingin_comp';
 import { OR_COMPONENT } from '../components/other_components/constant_comp';
 
-export default function Signin_scr (props) {
+export default function Signin_scr(props) {
 
   const [isRemember, setIsRemember] = useState(false)
   const [showPass, setShowPass] = useState(false)
 
-  const fields = [ 
-    INPUT_FIELDS.email, 
+  const fields = [
+    INPUT_FIELDS.email,
     {
       ...INPUT_FIELDS.password,
       isSecure: !showPass,
@@ -30,92 +30,91 @@ export default function Signin_scr (props) {
   }
 
   const rememberMe = () => (
-    <CheckboxComp 
-      isCheck={isRemember} 
-      onPress={()=>setIsRemember(!isRemember)}
-      text={'Remember me'} 
+    <CheckboxComp
+      isCheck={isRemember}
+      onPress={() => setIsRemember(!isRemember)}
+      text={'Remember me'}
       textStyle={styles.forgotText}
     />
   )
 
   const forgotPass = () => (
-    <TouchableOpacity onPress={()=>alert('Forgotten your password?')}>
+    <TouchableOpacity onPress={() => props.navigation.navigate(AUTH_NAVIGATOR.resetPassword)}>
       <Text style={styles.forgotText}>Forgotten your password?</Text>
     </TouchableOpacity>
   )
 
-  const beforeBtn = 
+  const beforeBtn =
     <TwoColsComp
       leftComp={rememberMe()}
-      leftStyle={{flex: 1}}
+      leftStyle={{ flex: 1, justifyContent: 'center' }}
       rightComp={forgotPass()}
-      rightStyle={{flex: 2}}
+      rightStyle={{ flex: 2, justifyContent: 'center' }}
     />
-  
-  return(
-    <AccountTemplate 
-      screenTitle={'SIGN IN'} 
-      inputFields={fields} 
+
+  const singup = () => (
+    <View style={styles.container}>
+      <Text style={styles.info}>Don't you have an account? </Text>
+      <TouchableOpacity onPress={() => props.navigation.navigate(AUTH_NAVIGATOR.signup)}>
+        <Text style={styles.signup}> Sign up now! </Text>
+      </TouchableOpacity>
+    </View>
+  )
+
+  return (
+    <AccountTemplate
+      screenTitle={'SIGN IN'}
+      inputFields={fields}
       handleSubmit={handleLogin}
       submitButton={signinBtn}
       beforeBtn={beforeBtn}
     >
-      {/* <View style={styles.textContainer}>
-        <View style={styles.line}/>
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <Text style={styles.text}>OR</Text>
-        </View>
-        <View style={styles.line}/>
-      </View> */}
-      
-      {OR_COMPONENT}
-
-      <AlternativeSigninComp/>
-
-      <View style={styles.container}>
-        <Text style={styles.info}>Don't you have an account? </Text>
-        <TouchableOpacity onPress={()=>props.navigation.navigate(AUTH_NAVIGATOR.signup)}>
-          <Text style={styles.signup}> Sign up now! </Text>
-        </TouchableOpacity>
+      <View style={{flex: 1, marginBottom: 35,}}>
+        {OR_COMPONENT}
+        <AlternativeSigninComp />
+        {singup()}
       </View>
-
     </AccountTemplate>
   )
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    flexDirection:'row',
+  container: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 15,
   },
   info: {
-    color: COLORS.DARK_GRAY
+    color: COLORS.DARK_GRAY,
+    fontFamily: ROBOTO_FONT.medium,
+    fontSize: FONT_SIZE.body_2,
   },
-  signup:{
+  signup: {
     color: COLORS.PRIMARY,
+    fontFamily: ROBOTO_FONT.medium,
+    fontSize: FONT_SIZE.body_2,
   },
-  seperator:{
-    width:'100%',
+  seperator: {
+    width: '100%',
   },
-  textContainer:{
+  textContainer: {
     marginBottom: 15,
     alignItems: 'center',
     flexDirection: 'row',
   },
-  line:{
+  line: {
     backgroundColor: COLORS.DARK_GRAY,
     flex: 3,
     height: 1,
   },
-  text:{
+  text: {
     color: COLORS.DARK_GRAY,
     fontFamily: ROBOTO_FONT.bold,
     fontSize: FONT_SIZE.body_1,
   },
-  forgotText:{
+  forgotText: {
     fontFamily: ROBOTO_FONT.regular,
-    fontSize: FONT_SIZE.body_2,
+    fontSize: FONT_SIZE.body_3,
   }
 })

@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     marginBottom: 15,
+    marginTop: 15,
     alignItems: 'center',
     flexDirection: 'row',
   },

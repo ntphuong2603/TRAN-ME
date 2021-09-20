@@ -8,7 +8,8 @@ import { COLORS, FONT_SIZE, PROFILE_NAVIGATOR, ROBOTO_FONT, SHOP_NAVIGATOR } fro
 export default function SettingTemplate(props) {
 
   const { navigation, title, button } = props
-  const { isShowQRCode, isShowCamera, isShowRectangle, isShowButton, isShowTrash, isWhiteArrow, isNoBackground } = props
+  const { isShowQRCode, isShowCamera, isShowButton, isShowTrash, isWhiteArrow } = props
+  const { isRectangleOnly, isShowRectangle, isNoBackground } = props
   const { titleStyle } = props
 
   const BackArrow = () => (
@@ -69,7 +70,7 @@ export default function SettingTemplate(props) {
   )
 
   return (
-    <HOC_Background isShowRectangle={isShowRectangle} isNoBackground={isNoBackground}>
+    <HOC_Background isShowRectangle={isShowRectangle} isNoBackground={isNoBackground} isRectangleOnly={isRectangleOnly}>
       <View style={styles.container}>
         <TitleBar />
         <View style={styles.viewContainer}>
